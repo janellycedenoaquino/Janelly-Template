@@ -8,19 +8,15 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 
 const pages = [
   { Home: "/" },
   { "Sign In": "Sign-In" },
   { "Sign Up": "Sign Up" },
 ];
-import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
 const Navbar = () => {
-  const [value, setValue] = useState();
-  const [openDrawer, setOpenDrawer] = useState(false);
-
   const theme = useTheme();
   console.log(theme);
   const medium = useMediaQuery(theme.breakpoints.down("md"));
@@ -30,7 +26,12 @@ const Navbar = () => {
       <AppBar sx={{ background: "#063970" }}>
         <Toolbar>
           <div>
-            <AccountCircleIcon />
+            <AccountBoxIcon
+              sx={{ transform: "scale(1)" }}
+              onClick={() => {
+                "hello i was clicked";
+              }}
+            />
           </div>
           {medium ? (
             <>
