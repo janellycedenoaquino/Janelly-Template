@@ -31,7 +31,6 @@ start both backend and frontend with "npm run start"
 start frontend alone with "npm run start-FE"
 start backend alone with "npm run start-BE"
 ```
-
-
+> both back-end and front-end are running on port 1995
 
 #### template created completely from scratch without create react app
