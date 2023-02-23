@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Home from "./Home.js";
 import {
   AppBar,
   Button,
@@ -9,59 +10,45 @@ import {
   useTheme,
 } from "@mui/material";
 
-const pages = [
-  { Home: "/" },
-  { "Sign In": "Sign-In" },
-  { "Sign Up": "Sign Up" },
-];
 import HomeIcon from "@mui/icons-material/Home";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const theme = useTheme();
   console.log(theme);
-  const medium = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(medium);
   return (
     <div>
       <AppBar sx={{ background: "#063970" }}>
         <Toolbar>
           <div>
             <HomeIcon
+              style={{ textDecoration: "none" }}
               sx={{ transform: "scale(1)" }}
               onClick={() => {
-                "hello i was clicked";
+                navigate("/");
               }}
             ></HomeIcon>
           </div>
-          {medium ? (
-            <>
-              <Typography sx={{ fontSize: "2rem", paddingLeft: "10%" }}>
-                Name of shop
-              </Typography>
-            </>
-          ) : (
-            <>
-              <Button
-                href={"/singIn"}
-                style={{ textDecoration: "none" }}
-                sx={{ marginLeft: "auto" }}
-                variant="contained"
-              >
-                Sign In
-              </Button>
-              <Button
-                href={"/signUp"}
-                sx={{ marginLeft: "10px" }}
-                variant="contained"
-              >
-                Sign Up
-              </Button>
-            </>
-          )}
+          <>
+            <Button
+              href={"/singIn"}
+              style={{ textDecoration: "none" }}
+              sx={{ marginLeft: "auto" }}
+              variant="contained"
+            >
+              Sign In
+            </Button>
+            <Button
+              href={"/signUp"}
+              sx={{ marginLeft: "10px" }}
+              variant="contained"
+            >
+              Sign Up
+            </Button>
+          </>
         </Toolbar>
       </AppBar>
     </div>
   );
 };
-
 export default Navbar;
