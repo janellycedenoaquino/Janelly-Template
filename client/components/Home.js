@@ -2,22 +2,22 @@ import React from "react";
 import { Box } from "@mui/material";
 
 const Home = () => {
+  const style1 = {
+    fontSize: 50,
+    color: "#063970",
+    textAlign: "center",
+    paddingTop: "100px",
+  };
+
+  const style2 = {
+    fontSize: 35,
+    color: "gray",
+    textAlign: "center",
+  };
   return (
-    <div style={{ margin: "100px" }}>
-      helloooo
-      <Box>hello</Box>
-      {/* <Box
-        m={1}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        sx={boxDefault}
-      > */}
-      {/* example */}
-      {/* <Button variant="contained" color="primary" sx={{ height: 40 }}>
-          Primary
-        </Button> */}
-      {/* </Box> */}
+    <div>
+      <div style={style1}>Welcome to the home page</div>
+      <div style={style2}>edit me pls</div>
     </div>
   );
 };
