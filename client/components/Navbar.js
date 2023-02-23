@@ -14,7 +14,7 @@ const pages = [
   { "Sign In": "Sign-In" },
   { "Sign Up": "Sign Up" },
 ];
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import HomeIcon from "@mui/icons-material/Home";
 
 const Navbar = () => {
   const theme = useTheme();
@@ -26,12 +26,12 @@ const Navbar = () => {
       <AppBar sx={{ background: "#063970" }}>
         <Toolbar>
           <div>
-            <AccountBoxIcon
+            <HomeIcon
               sx={{ transform: "scale(1)" }}
               onClick={() => {
                 "hello i was clicked";
               }}
-            />
+            ></HomeIcon>
           </div>
           {medium ? (
             <>
@@ -41,11 +41,20 @@ const Navbar = () => {
             </>
           ) : (
             <>
-              <Button sx={{ marginLeft: "auto" }} variant="contained">
-                {<Link to={`/singIn`}>Sign In</Link>}
+              <Button
+                href={"/singIn"}
+                style={{ textDecoration: "none" }}
+                sx={{ marginLeft: "auto" }}
+                variant="contained"
+              >
+                Sign In
               </Button>
-              <Button sx={{ marginLeft: "10px" }} variant="contained">
-                {<Link to={`/signUp`}>Sign Up</Link>}
+              <Button
+                href={"/signUp"}
+                sx={{ marginLeft: "10px" }}
+                variant="contained"
+              >
+                Sign Up
               </Button>
             </>
           )}

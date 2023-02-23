@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": " nodemon ./server/index.js",
-    "start-dev": "webpack -w & nodemon server"
+    "start": "webpack -w & nodemon server",
+    "startFE": "webpack -w",
+    "startBE": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -28,7 +30,7 @@
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
-    "@mui/icons-material": "^5.8.4",
+    "@mui/icons-material": "^5.11.9",
     "@mui/material": "^5.8.6",
     "@mui/styled-engine-sc": "^5.8.0",
     "cors": "^2.8.5",
@@ -45,5 +47,5 @@
     "react-router-dom": "^6.3.0",
     "sequelize": "^6.21.2",
     "styled-components": "^5.3.5"
-   }
+  }
 }
