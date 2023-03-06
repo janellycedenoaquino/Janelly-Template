@@ -28,7 +28,7 @@ createdb <YOUR dbName>
    - use an app to generate a random string ex: http://www.unit-conversion.info/texttools/random-string-generator/
    - this is an example of what your .env file should look like: 
   ```
-  SECRET_TOKEN=az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
+  SECRET_TOKEN=badBTcH809az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
   ```
 
 
