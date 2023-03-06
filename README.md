@@ -17,20 +17,25 @@ git branch -m master main
 Now that you've got the code, follow these steps to get acclimated:
 
 1. Update project name and description in package.json
-2. edit .env file and create env variable "SECRET_TOKEN" to help hash password
-3. edit postgress database server/db/indexjs
-4. create db same name used in server/db/indexjs
+3. edit dbName inside server/db/indexjs
+4. create a database with same name used in dbName inside file server/db/indexjs
 5. This commands will help you create your databases
 ```
-createdb <YOUR APP NAME HERE FROM>
+createdb <YOUR dbName>
 ```
+6. create .env file
+   - create an enviroment variable called "SECRET_TOKEN" and assign it a random string
+   - use an app to generate a random string ex: http://www.unit-conversion.info/texttools/random-string-generator/
+   - this is an example of what your .env file should look like: 
+  ```
+  SECRET_TOKEN=az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
+  ```
+
 
 ## run your program
 ```
 npm i
 start both backend and frontend with "npm run start"
-start frontend alone with "npm run start-FE"
-start backend alone with "npm run start-BE"
 ```
 > both back-end and front-end are running on port 1995
 
