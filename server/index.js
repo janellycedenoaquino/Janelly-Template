@@ -9,10 +9,12 @@ const PORT = process.env.PORT || 1995;
 
 //middleware
 app.use(cors());
-app.use(morgan("dev")); //status of page
-app.use(express.static(path.join(__dirname, "..", "./public"))); //serve static files
-app.use(express.json()); //body-parsing recognizes requests in json format
-app.use(express.urlencoded({ extended: true })); //body-parsing recognizes the incoming requests objects as strings or arrays
+app.use(morgan("dev")); 
+app.use(express.static(path.join(__dirname, "..", "./public"))); 
+app.use(express.json()); 
+app.use(express.urlencoded({ extended: true })); 
+
+
 //routes
 app.use("/api", require("./api"));
 
@@ -28,13 +30,15 @@ app.use((err, req, res, next) => {
 });
 
 //running app
-db.sync().then(() => {
-  console.log("connected to db");
-  app.listen(PORT, () => {
-    console.log(`listening on port: http://localhost:${PORT}/`);
-  });
-});
+const init = async () => {
+  try {
+    await db.sync();
+    app.listen(PORT, () =>
+      console.log(`Mixing it up on port http://localhost:${PORT}`)
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-db.authenticate().then(() => {
-  console.log("successfully connected to the db");
-});
+init();

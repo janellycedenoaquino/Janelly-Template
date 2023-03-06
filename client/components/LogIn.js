@@ -1,4 +1,5 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -13,20 +14,37 @@ import {
   Container,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
 
 const theme = createTheme();
 
-function LogIn() {
-  const handleSubmit = (event) => {
+function LogIn(props) {
+  const navigate = useNavigate();
+  const user = props.user;
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const user = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    };
+
+    axios
+      .post(`/api/auth/login`, { email: user.email, password: user.password })
+      .then((res) => {
+        window.localStorage.setItem("token", res.data.token);
+        window.location.reload(false);
+
+      })
+      .catch((error) => {
+        console.log("there was an error", error);
+      });
   };
 
-  return (
+  return user.firstName ? (
+    navigate("/")
+  ) : (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -87,7 +105,7 @@ function LogIn() {
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

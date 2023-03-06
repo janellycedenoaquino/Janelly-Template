@@ -6,12 +6,17 @@ import SignUp from "./SignUp";
 
 class AllRoutes extends Component {
   render() {
+    const { user, firstName } = this.props;
     return (
       <div>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/singIn" element={<LogIn />} />
-          <Route path="/signUp" element={<SignUp />} />
+          <Route
+            exact
+            path="/"
+            element={<Home user={user} firstName={firstName} />}
+          />
+          <Route path="/signIn" element={<LogIn user={user} />} />
+          <Route path="/signUp" element={<SignUp user={user} />} />
         </Routes>
       </div>
     );

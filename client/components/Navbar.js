@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Home from "./Home.js";
 import {
@@ -12,11 +13,40 @@ import {
 
 import HomeIcon from "@mui/icons-material/Home";
 
-const Navbar = () => {
+const Navbar = (props) => {
   const navigate = useNavigate();
   const theme = useTheme();
-  console.log(theme);
-  return (
+  const { user, firstName } = props;
+
+  console.log("user from navbar: ", props);
+
+  const handleLogOut = () => {
+    window.localStorage.removeItem("token");
+  };
+
+  return user.firstName ? (
+    <div>
+      <AppBar sx={{ background: "#063970" }}>
+        <Toolbar>
+          <div>Welcome {firstName}</div>
+          <>
+            <Button
+              href={"/"}
+              style={{ textDecoration: "none" }}
+              sx={{ marginLeft: "auto" }}
+              variant="contained"
+              onClick={() => {
+                console.log("user is trying to log out");
+                handleLogOut();
+              }}
+            >
+              log out
+            </Button>
+          </>
+        </Toolbar>
+      </AppBar>
+    </div>
+  ) : (
     <div>
       <AppBar sx={{ background: "#063970" }}>
         <Toolbar>
@@ -31,7 +61,7 @@ const Navbar = () => {
           </div>
           <>
             <Button
-              href={"/singIn"}
+              href={"/signIn"}
               style={{ textDecoration: "none" }}
               sx={{ marginLeft: "auto" }}
               variant="contained"
