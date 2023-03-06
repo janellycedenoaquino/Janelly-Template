@@ -18,8 +18,6 @@ const Navbar = (props) => {
   const theme = useTheme();
   const { user, firstName } = props;
 
-  console.log("user from navbar: ", props);
-
   const handleLogOut = () => {
     window.localStorage.removeItem("token");
   };

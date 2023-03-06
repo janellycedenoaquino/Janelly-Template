@@ -35,7 +35,6 @@ function LogIn(props) {
       .then((res) => {
         window.localStorage.setItem("token", res.data.token);
         window.location.reload(false);
-
       })
       .catch((error) => {
         console.log("there was an error", error);

@@ -1,11 +1,9 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
   Grid,
   Box,
@@ -14,6 +12,7 @@ import {
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const theme = createTheme();
 
@@ -21,28 +20,18 @@ function SignUp(props) {
   const navigate = useNavigate();
   const user = props.user;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
 
-    console.log(
-      "inside sign up",
-      data.get("email"),
-      data.get("password"),
-      data.get("firstName"),
-      data.get("lastName")
-    );
-
-    axios
-      .post(`/api/auth/signup`, {
-        email: data.get("email"),
-        password: data.get("password"),
-        firstName: data.get("firstName"),
-        lastName: data.get("lastName"),
-      })
-      .then((res) => {
-        console.log("res from SignUp component", res);
-      });
+    const res = await axios.post(`/api/auth/signup`, {
+      email: data.get("email"),
+      password: data.get("password"),
+      firstName: data.get("firstName"),
+      lastName: data.get("lastName"),
+    });
+    window.localStorage.setItem("token", res.data.token);
+    window.location.reload(false);
   };
 
   return user.firstName ? (

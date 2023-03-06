@@ -13,12 +13,11 @@ const App = () => {
     async function userLoggedIn() {
       const token = window.localStorage.getItem("token");
       if (token) {
-        const res = await axios.get("api/auth/me", {
+        const res = await axios.get(`/api/auth/me`, {
           headers: {
             authorization: token,
           },
         });
-
         setUser(res.data);
       }
     }
