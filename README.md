@@ -23,7 +23,7 @@ Now that you've got the code, follow these steps to get acclimated:
 ```
 createdb <YOUR APP NAME HERE FROM>
 ```
-5.edit .env file and create env variable "SECRET_TOKEN" to help hash password
+5. edit .env file and create env variable "SECRET_TOKEN" to help hash password
 
 ## run your program
 ```
