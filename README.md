@@ -17,13 +17,13 @@ git branch -m master main
 Now that you've got the code, follow these steps to get acclimated:
 
 1. Update project name and description in package.json
-2. edit postgress database server/db/indexjs
-3. create db same name used in server/db/indexjs
-4. This commands will help you create your databases
+2. edit .env file and create env variable "SECRET_TOKEN" to help hash password
+3. edit postgress database server/db/indexjs
+4. create db same name used in server/db/indexjs
+5. This commands will help you create your databases
 ```
 createdb <YOUR APP NAME HERE FROM>
 ```
-5. edit .env file and create env variable "SECRET_TOKEN" to help hash password
 
 ## run your program
 ```
