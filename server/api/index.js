@@ -1,9 +1,7 @@
 const router = require("express").Router();
-const user = require("./users");
 const auth = require("./auth");
 
 //all api routes will meet here to keep page concise and uniform
-router.use("/users", user);
 router.use("/auth", auth);
 
 router.use(function (req, res, next) {
