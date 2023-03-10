@@ -1,44 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
-  FormControlLabel,
-  Checkbox,
   Link,
   Grid,
   Box,
-  Typography,
   Container,
+  Typography,
 } from "@mui/material";
+import LockIcon from "@mui/icons-material/Lock";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
+import { verifyOTP, errorMessage } from "./ForgotPassHelper";
 
 const theme = createTheme();
 
-function LogIn(props) {
+function ForgotPassword(props) {
   const navigate = useNavigate();
   const user = props.user;
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const user = {
-      email: data.get("email"),
-      password: data.get("password"),
-    };
+    const email = new FormData(event.currentTarget).get("email");
 
-    axios
-      .post(`/api/auth/login`, { email: user.email, password: user.password })
-      .then((res) => {
-        window.localStorage.setItem("token", res.data.token);
-        window.location.reload(false);
-      })
-      .catch((error) => {
-        console.log("there was an error", error);
-      });
+    if (/\S+@\S+\.\S+/.test(email)) {
+      const OTP = Math.floor(1000 + Math.random() * 9000);
+
+      axios
+        .post(`api/auth/send_recovery_email`, {
+          email,
+          OTP,
+        })
+        .then(verifyOTP(email, OTP));
+    } else {
+      errorMessage("email");
+    }
   };
 
   return user.firstName ? (
@@ -49,22 +47,24 @@ function LogIn(props) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 10,
+            marginTop: 15,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
+          <LockIcon style={{ fontSize: 100 }} sx={{ m: 2 }}></LockIcon>
+          <p>
+            We can help you reset your password and security info. First, enter
+            your account email and follow the instructions.
+          </p>
           <Box
             component="form"
             onSubmit={handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
+            <Typography component="h6" variant="h6"></Typography>
             <TextField
               margin="normal"
               required
@@ -75,36 +75,22 @@ function LogIn(props) {
               autoComplete="email"
               autoFocus
             />
-            <TextField
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
             <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              Recover Account
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link
-                  href="/forgotPassword"
+                  href="/signIn"
                   variant="body2"
                   style={{ textDecoration: "none" }}
                 >
-                  Forgot password?
+                  Cancel
                 </Link>
               </Grid>
               <Grid item>
@@ -124,4 +110,4 @@ function LogIn(props) {
   );
 }
 
-export default LogIn;
+export default ForgotPassword;

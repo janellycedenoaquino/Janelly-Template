@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./Home";
 import LogIn from "./LogIn";
 import SignUp from "./SignUp";
+import ForgotPassword from "./ForgotPassword";
 
 class AllRoutes extends Component {
   render() {
@@ -17,6 +18,10 @@ class AllRoutes extends Component {
           />
           <Route path="/signIn" element={<LogIn user={user} />} />
           <Route path="/signUp" element={<SignUp user={user} />} />
+          <Route
+            path="/forgotPassword"
+            element={<ForgotPassword user={user} />}
+          />
         </Routes>
       </div>
     );

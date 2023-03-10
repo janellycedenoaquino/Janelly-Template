@@ -42,7 +42,7 @@ function SignUp(props) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 15,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -112,7 +112,11 @@ function SignUp(props) {
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="/signIn" variant="body2">
+                <Link
+                  href="/signIn"
+                  variant="body2"
+                  style={{ textDecoration: "none" }}
+                >
                   Already have an account? Sign in
                 </Link>
               </Grid>
