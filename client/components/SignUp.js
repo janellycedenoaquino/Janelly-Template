@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
@@ -11,6 +10,8 @@ import {
   Container,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -48,9 +49,12 @@ function SignUp(props) {
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+          <AccountBoxIcon
+            style={{ fontSize: 100, color: "purple" }}
+            sx={{ m: 3}}
+          ></AccountBoxIcon>
           <Typography component="h1" variant="h5">
-            Sign up
+            SIGN UP
           </Typography>
           <Box
             component="form"

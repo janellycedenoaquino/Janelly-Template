@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import {
-  Avatar,
   Button,
   CssBaseline,
   TextField,
@@ -13,6 +12,7 @@ import {
   Typography,
   Container,
 } from "@mui/material";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import axios from "axios";
 
@@ -49,15 +49,18 @@ function LogIn(props) {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 10,
+            marginTop: 15,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}></Avatar>
+          <AccountBoxIcon
+            style={{ fontSize: 100, color: "purple" }}
+            sx={{ m: 3 }}
+          ></AccountBoxIcon>
           <Typography component="h1" variant="h5">
-            Sign in
+            SIGN IN
           </Typography>
           <Box
             component="form"
