@@ -10,9 +10,9 @@ import {
   Container,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { useNavigate } from "react-router-dom";
+import { errorMessage } from "./ForgotPassHelper";
 import axios from "axios";
 
 const theme = createTheme();
@@ -24,15 +24,27 @@ function SignUp(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-
-    const res = await axios.post(`/api/auth/signup`, {
-      email: data.get("email"),
-      password: data.get("password"),
-      firstName: data.get("firstName"),
-      lastName: data.get("lastName"),
-    });
-    window.localStorage.setItem("token", res.data.token);
-    window.location.reload(false);
+    const email = data.get("email");
+    const password = data.get("password");
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
+    if (
+      firstName.length < 1 ||
+      lastName.length < 1 ||
+      password.length < 5 ||
+      /\S+@\S+\.\S+/.test(email)
+    ) {
+      errorMessage("please fix your credentials");
+    } else {
+      const res = await axios.post(`/api/auth/signup`, {
+        email,
+        password,
+        firstName,
+        lastName,
+      });
+      window.localStorage.setItem("token", res.data.token);
+      window.location.reload(false);
+    }
   };
 
   return user.firstName ? (
@@ -51,7 +63,7 @@ function SignUp(props) {
         >
           <AccountBoxIcon
             style={{ fontSize: 100, color: "purple" }}
-            sx={{ m: 3}}
+            sx={{ m: 3 }}
           ></AccountBoxIcon>
           <Typography component="h1" variant="h5">
             SIGN UP
@@ -67,7 +79,7 @@ function SignUp(props) {
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
-                  required
+                  required={true}
                   fullWidth
                   id="firstName"
                   label="First Name"
@@ -76,7 +88,7 @@ function SignUp(props) {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   id="lastName"
                   label="Last Name"
@@ -86,7 +98,7 @@ function SignUp(props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -96,7 +108,7 @@ function SignUp(props) {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  required
+                  required={true}
                   fullWidth
                   name="password"
                   label="Password"

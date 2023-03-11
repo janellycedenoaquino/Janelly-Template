@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User } = require("../db/User");
 const nodemailer = require("nodemailer");
-const bcrypt = require("bcrypt");
 
 router.put("/reset_password", async (req, res, next) => {
   const { email } = req.body;
@@ -55,7 +54,6 @@ router.get("/me", async (req, res, next) => {
 
 const sendOTPVerificationEmail = async (req) => {
   const { email, OTP } = req.body;
-
   return new Promise((resolve, reject) => {
     const transporter = nodemailer.createTransport({
       host: "smtp.office365.com",

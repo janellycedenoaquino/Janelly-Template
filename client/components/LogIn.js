@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { errorMessage } from "./ForgotPassHelper";
 import axios from "axios";
 
 const theme = createTheme();
@@ -38,6 +39,7 @@ function LogIn(props) {
       })
       .catch((error) => {
         console.log("there was an error", error);
+        errorMessage("Wrong Email/Password");
       });
   };
 

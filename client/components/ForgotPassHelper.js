@@ -77,7 +77,7 @@ export async function verifyOTP(email, OTP) {
         setTimeout(changePassword(email, OTP), 30000);
         return true;
       } else {
-        errorMessage();
+        errorMessage("OTP");
       }
     },
     allowOutsideClick: false,
@@ -97,6 +97,6 @@ export function errorMessage(error) {
     icon: "error",
     confirmButtonColor: "#1876d2",
     title: "Oops...",
-    text: `Please enter a valid ${error}`,
+    text: `${error}`,
   });
 }
