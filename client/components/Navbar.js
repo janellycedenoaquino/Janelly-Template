@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
-import Home from "./Home.js";
-import {
-  AppBar,
-  Button,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { AppBar, Button, Toolbar, useTheme } from "@mui/material";
 
 import HomeIcon from "@mui/icons-material/Home";
 
 const Navbar = (props) => {
   const navigate = useNavigate();
-  const theme = useTheme();
   const { user, firstName } = props;
 
   const handleLogOut = () => {

@@ -2,7 +2,7 @@ import Swal from "sweetalert2";
 import axios from "axios";
 
 export async function putReq(email, password) {
-  let val = await axios.put("api/auth/reset_password", {
+  let val = await axios.put("api/emailRecovery/reset_password", {
     email,
     password,
   });

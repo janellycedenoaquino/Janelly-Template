@@ -21,19 +21,25 @@ function ForgotPassword(props) {
   const navigate = useNavigate();
   const user = props.user;
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const email = new FormData(event.currentTarget).get("email");
+    const OTP = Math.floor(1000 + Math.random() * 9000);
 
     if (/\S+@\S+\.\S+/.test(email)) {
-      const OTP = Math.floor(1000 + Math.random() * 9000);
+      //check if user exists
+      const user = axios.get(`api/users/${email}`);
 
-      axios
-        .post(`api/auth/send_recovery_email`, {
-          email,
-          OTP,
-        })
-        .then(verifyOTP(email, OTP));
+      if ((await user).data === "") {
+        errorMessage("Your email is not in our system");
+      } else {
+        axios
+          .post(`api/emailRecovery/send_recovery_email`, {
+            email,
+            OTP,
+          })
+          .then(verifyOTP(email, OTP));
+      }
     } else {
       errorMessage("email");
     }

@@ -32,7 +32,7 @@ function SignUp(props) {
       firstName.length < 1 ||
       lastName.length < 1 ||
       password.length < 5 ||
-      /\S+@\S+\.\S+/.test(email)
+      !/\S+@\S+\.\S+/.test(email)
     ) {
       errorMessage("please fix your credentials");
     } else {
