@@ -1,5 +1,12 @@
 # boilerplate
 
+## Demonstration
+### Sign up
+![signUPloop](https://user-images.githubusercontent.com/54867270/224527033-93c45b73-33ea-4d8d-bf39-49139c2fb332.gif)
+### reset password
+![passwordReset](https://user-images.githubusercontent.com/54867270/224526324-af24a58e-e06a-4d55-86f0-fa13e9cbeda9.gif)
+
+
 ## Setup
 To use this as boilerplate, you'll need to take the following steps:
 
