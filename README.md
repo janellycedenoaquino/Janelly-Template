@@ -44,17 +44,22 @@ Now that you've got the code, follow these steps to get acclimated:
 
 1. Update project name and description in package.json
 2. edit dbName inside server/db/indexjs
-3. create a database with same name used in dbName inside file server/db/indexjs
-4. This commands will help you create your databases
+3. create a database with the same name as dbName
+4. This commands will help you create your database
 ```
 createdb <YOUR dbName>
 ```
 5. create .env file
-   - create an enviroment variable called "SECRET_TOKEN" and assign it a random string
+   - create enviroment variables called: 
+      - "SECRET_TOKEN" - used for hashing password and recovering hashed password 
+      - "MY_EMAIL"  - the email you will use to send recovery emails
+      - "MY_PASSWORD" - the password you use with that email
    - use an app to generate a random string ex: http://www.unit-conversion.info/texttools/random-string-generator/
-   - this is an example of what your .env file should look like: 
+   - An example of what your .env file should look: 
   ```
   SECRET_TOKEN=badBTcH809az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
+  MY_EMAIL="myAppEmail@gmail.com"
+  MY_PASSWORD="myAppEmail@gmail.com's password"
   ```
 6. Update Favicon 
    - delete picture and add your own 
