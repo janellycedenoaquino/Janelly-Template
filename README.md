@@ -1,76 +1,102 @@
-# Template
-### ABOUT THE APP
-This app is a template app. It helps users jumpstart their own app development process. Essentially, it provides a basic structure and functionality for an app, so users don't have to start from scratch and build everything from the ground up.
+# 🧩 Janelly Template
 
-One of the key advantages of using this template app is that it saves a lot of time and effort in the development process. Users don't have to worry about setting up basic features such as user sign-up, sign-out, and password recovery because these features are already built-in to the template.
+A full-stack boilerplate app built **completely from scratch** (no Create React App or scaffolding tools).  
+It provides a solid starting point with authentication, password recovery, and a working backend–frontend setup so developers can **jumpstart their own app development** instead of starting from zero.
 
-Here's how the app works:
-First, users would need to download the template app and open it in their preferred development environment. Once they have the template app set up, they can start customizing it to their needs.
-[click for instructions here](#setup)
+---
 
-The app comes with several pre-built pages and features, such as a landing page, a login page, and a sign-up page. Users can modify these pages by changing the layout, adding new features, or removing existing ones.
+## 🚀 Features
+- Pre-built auth flows: sign-up, login, logout, and password recovery with secure token hashing  
+- Reusable structure: landing page, login page, sign-up page, customizable frontend + backend  
+- Backend included: Node.js + PostgreSQL for authentication & data storage  
+- Environment configuration: `.env` support for secrets and email integration  
+- Built from scratch: no CRA or generators, showing full-stack setup knowledge  
 
-Additionally, the app includes a basic backend that handles user authentication and data storage. This allows users to focus on building their app's core functionality, rather than worrying about the underlying infrastructure.
+---
 
-Overall, this template app is a great option for anyone who wants to develop an app quickly and efficiently. By using the template, users can skip over the basic setup process and focus on building the features that matter most to their users.
+## 🛠️ Technologies Used
+- **Frontend**: JavaScript, React  
+- **Backend**: Node.js, Express  
+- **Database**: PostgreSQL  
+- **Other**: JWT, bcrypt, dotenv  
 
-technologies used: JAVASCRIPT, REACT, NODEJS, POSTGRESQL...
+---
 
-
-## Demonstration
-
-
-### Sign up
+## 🎥 Demonstration
+### **Sign Up**  
 ![signUPloop](https://user-images.githubusercontent.com/54867270/224527033-93c45b73-33ea-4d8d-bf39-49139c2fb332.gif)
-### reset password
+### **reset password**
 ![passwordReset](https://user-images.githubusercontent.com/54867270/224526324-af24a58e-e06a-4d55-86f0-fa13e9cbeda9.gif)
 
 
-## Setup
-To use this as boilerplate, you'll need to take the following steps:
+## ⚙️ Setup
 
-> Don't fork or clone this repo! Instead, create a new, empty directory on your machine and git init (or create an empty repo on Github and clone it to your local machine)
-
-Now you will have to add the Janelly-Template as a remote and merge it into your own repository.
-```
-git remote add Janelly-Template git@github.com:janellycedenoaquino/Janelly-Template.git
-git fetch Janelly-Template
-git merge Janelly-Template/main
+### 1. Initialize Your Project
+```bash
+mkdir my-new-app && cd my-new-app
+git init
+git remote add template git@github.com:janellycedenoaquino/Janelly-Template.git
+git fetch template
+git merge template/main
 git branch -m master main
 ```
 
-## Customize
-Now that you've got the code, follow these steps to get acclimated:
+## 🛠️ Customize
 
-1. Update project name and description in package.json
-2. edit dbName inside server/db/indexjs
-3. create a database with the same name as dbName
-4. This commands will help you create your database
-```
-createdb <YOUR dbName>
-```
-5. create .env file
-   - create enviroment variables called: 
-      - "SECRET_TOKEN" - used for hashing password and recovering hashed password 
-      - "MY_EMAIL"  - the email you will use to send recovery emails
-      - "MY_PASSWORD" - the password you use with that email
-   - use an app to generate a random string ex: http://www.unit-conversion.info/texttools/random-string-generator/
-   - An example of what your .env file should look: 
-  ```
-  SECRET_TOKEN=badBTcH809az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
-  MY_EMAIL="myAppEmail@gmail.com"
-  MY_PASSWORD="myAppEmail@gmail.com's password"
-  ```
-6. Update Favicon 
-   - delete picture and add your own 
-   - make sure the new image has the name favicon.ico
+Now that you've merged the template, follow these steps to get set up:
+
+1. **Update project metadata**
+   - Open `package.json` and update the `name` and `description` fields.  
+
+2. **Configure database**
+   - Edit `dbName` inside `server/db/index.js`.  
+   - Create a PostgreSQL database with the same name:  
+     ```bash
+     createdb <YOUR_DB_NAME>
+     ```
+3. **Set up environment variables**
+   - Create a `.env` file in the root directory.  
+   - Add the following variables:  
+     - `SECRET_TOKEN` → used for hashing passwords and generating recovery tokens  
+     - `MY_EMAIL` → the email address you’ll use to send recovery emails  
+     - `MY_PASSWORD` → the password for that email account
+
+   👉 You can generate a random string for `SECRET_TOKEN` here: [Random String Generator](http://www.unit-conversion.info/texttools/random-string-generator/)
+
+   **Example `.env`:**
+   ```env
+   SECRET_TOKEN=badBTcH809az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
+   MY_EMAIL=myAppEmail@gmail.com
+   MY_PASSWORD=myAppEmailPassword123
+4. Update favicon
+   - Replace the existing favicon.ico with your own image.
+   - Make sure the new file is named exactly favicon.ico.
+5. **Create `.env` file**  
+   - Add the following environment variables:  
+     - `SECRET_TOKEN` → used for hashing passwords and generating recovery tokens  
+     - `MY_EMAIL` → the email you will use to send recovery emails  
+     - `MY_PASSWORD` → the password for that email account  
+
+   👉 Generate a random string for `SECRET_TOKEN` here: [Random String Generator](http://www.unit-conversion.info/texttools/random-string-generator/)
+
+   **Example `.env`:**
+   env
+   SECRET_TOKEN=bb809az3ZhIjxH9jgf2bbs9BsvM6Wh2G07XnPr1rWZhpQuUAy2h8qNbNvrK6gZVgByQey
+   MY_EMAIL=myAppEmail@gmail.com
+   MY_PASSWORD=myAppEmailPassword123
+6. Update favicon
+- Delete the existing favicon.ico in the project.
+- Replace it with your own image.
+- Ensure the new file is named exactly favicon.ico.
+
 
 
 ## run your program
 ```
 npm i
 start both backend and frontend with "npm run start"
-```
 > both back-end and front-end are running on port 1995
-
-#### template created completely from scratch without create react app
+```
+📌 Notes
+This template was created entirely from scratch (no CRA).
+Designed for clarity, reusability, and security in rapid development.
